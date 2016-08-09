@@ -3,10 +3,10 @@ import {TaskComponent} from './task.component'
 import {Task} from './task.model'
 import { EditTaskDetailsComponent } from './edit-task-details.component';
 import { NewTaskComponent } from './new-task.component';
-
-
+import { DonePipe } from './done.pipe';
 
 @Component({
+  pipes: [DonePipe],
   selector: 'task-list',
   inputs: ['taskList'],
   outputs: ['onTaskSelect'],
@@ -15,6 +15,7 @@ import { NewTaskComponent } from './new-task.component';
 })
 
 export class TaskListComponent {
+  public filterDone: string = "notDone";
   public taskList: Task[];
   public onTaskSelect: EventEmitter<Task>;
   public selectedTask: Task;
@@ -30,5 +31,9 @@ export class TaskListComponent {
     this.taskList.push(
       new Task(description, this.taskList.length)
     );
+  }
+  onChange(filterOption) {
+    this.filterDone = filterOption;
+    console.log(this.filterDone);
   }
 }

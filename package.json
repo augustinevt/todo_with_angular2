@@ -37,5 +37,13 @@
   },
   "main": "gulpfile.js",
   "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/augustinevt/todo_with_angular2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/augustinevt/todo_with_angular2/issues"
+  },
+  "homepage": "https://github.com/augustinevt/todo_with_angular2#readme",
   "description": ""
 }

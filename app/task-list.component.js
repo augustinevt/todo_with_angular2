@@ -1,4 +1,4 @@
-System.register(['angular2/core', './task.component', './task.model', './edit-task-details.component', './new-task.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './task.component', './task.model', './edit-task-details.component', './new-task.component', './done.pipe'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './task.component', './task.model', './edit-ta
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, task_component_1, task_model_1, edit_task_details_component_1, new_task_component_1;
+    var core_1, task_component_1, task_model_1, edit_task_details_component_1, new_task_component_1, done_pipe_1;
     var TaskListComponent;
     return {
         setters:[
@@ -28,10 +28,14 @@ System.register(['angular2/core', './task.component', './task.model', './edit-ta
             },
             function (new_task_component_1_1) {
                 new_task_component_1 = new_task_component_1_1;
+            },
+            function (done_pipe_1_1) {
+                done_pipe_1 = done_pipe_1_1;
             }],
         execute: function() {
             TaskListComponent = (function () {
                 function TaskListComponent() {
+                    this.filterDone = "notDone";
                     this.onTaskSelect = new core_1.EventEmitter();
                 }
                 TaskListComponent.prototype.taskClicked = function (clickedTask) {
@@ -42,8 +46,13 @@ System.register(['angular2/core', './task.component', './task.model', './edit-ta
                 TaskListComponent.prototype.createTask = function (description) {
                     this.taskList.push(new task_model_1.Task(description, this.taskList.length));
                 };
+                TaskListComponent.prototype.onChange = function (filterOption) {
+                    this.filterDone = filterOption;
+                    console.log(this.filterDone);
+                };
                 TaskListComponent = __decorate([
                     core_1.Component({
+                        pipes: [done_pipe_1.DonePipe],
                         selector: 'task-list',
                         inputs: ['taskList'],
                         outputs: ['onTaskSelect'],
