@@ -9,6 +9,7 @@
 * clone repository
 * run npm install in project directory
 * run npm start
+* run gulp build
 * go to localhost: 8000
 
 ## Known Bugs
